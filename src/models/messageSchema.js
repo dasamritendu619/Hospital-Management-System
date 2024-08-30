@@ -27,6 +27,12 @@ const messageSchema = new mongoose.Schema({
         required: true,
         minlength:[10, "Phone number must be at least 10 digits"],
         maxlength:[10, "Phone number must not exceed 10 digits"],
+    },
+    aadhar: {
+        type: String,
+        required: [true, "Aadhar Is Required!"],
+        minLength: [12, "Aadhar Must Contain Only 12 Digits!"],
+        maxLength: [12, "Aadhar Must Contain Only 12 Digits!"],
     }
 });
 

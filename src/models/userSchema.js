@@ -4,12 +4,12 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const userSchema = new mongoose.Schema({
-  firstname: {
+  firstName: {
     type: String,
     required: [true, "First Name Is Required!"],
     minLength: [3, "First Name Must Contain At Least 3 Characters!"],
   },
-  lastname: {
+  lastName: {
     type: String,
     required: [true, "Last Name Is Required!"],
     minLength: [3, "Last Name Must Contain At Least 3 Characters!"],
@@ -25,14 +25,14 @@ const userSchema = new mongoose.Schema({
     minLength: [10, "Phone Number Must Contain Exact 10 Digits!"],
     maxLength: [10, "Phone Number Must Contain Exact 10 Digits!"],
   },
-  nic: {
+  aadhar: {
     type: String,
-    required: [true, "NIC Is Required!"],
-    minLength: [5, "NIC Must Contain Only 5 Digits!"],
-    maxLength: [5, "NIC Must Contain Only 5 Digits!"],
+    required: [true, "Aadhar Is Required!"],
+    minLength: [12, "Aadhar Must Contain Only 12 Digits!"],
+    maxLength: [12, "Aadhar Must Contain Only 12 Digits!"],
   },
   dob: {
-    type: Date,
+    type: String,
     required: [true, "DOB Is Required!"],
   },
   gender: {

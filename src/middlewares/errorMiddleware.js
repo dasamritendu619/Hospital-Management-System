@@ -31,7 +31,7 @@ export const errorMiddleware = (err, req, res, next) => {
     ? Object.values(err.errors)
         .map(error => error.message) 
         .join(" ")
-    : err.message;
+    : console.log("Error Message: ", err.message);
 
     return res.status(err.statusCode)
     .json({
@@ -39,5 +39,6 @@ export const errorMiddleware = (err, req, res, next) => {
         message: errorMessage,
     });
 };
+
 
 export default ErrorHandler;

@@ -5,19 +5,20 @@ import { generateToken } from "../utils/jwtToken.js";
 import cloudinary from "cloudinary";
 
 export const patientRegister = catchAsyncErrors(async (req, res, next) => {
-  const { firstName, lastName, email, phone, nic, dob, gender, password } =
+  const { firstName, lastName, email, phone, aadhar, dob, gender, password } =
     req.body;
   if (
     !firstName ||
     !lastName ||
     !email ||
     !phone ||
-    !nic ||
+    !aadhar ||
     !dob ||
     !gender ||
     !password
   ) {
-    return next(new ErrorHandler("Please Fill Full Form!", 400));
+    // throw new ErrorHandler("Please Fill Full Form!", 400);
+     console.log("Please Fill Full Form!");
   }
 
   const isRegistered = await User.findOne({ email });
@@ -30,7 +31,7 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
     lastName,
     email,
     phone,
-    nic,
+    aadhar,
     dob,
     gender,
     password,
@@ -65,14 +66,14 @@ export const login = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
-  const { firstname, lastname, email, phone, nic, dob, gender, password } =
+  const { firstname, lastname, email, phone, aadhar, dob, gender, password } =
     req.body;
   if (
     !firstname ||
     !lastname ||
     !email ||
     !phone ||
-    !nic ||
+    !aadhar ||
     !dob ||
     !gender ||
     !password
@@ -90,7 +91,7 @@ export const addNewAdmin = catchAsyncErrors(async (req, res, next) => {
     lastname,
     email,
     phone,
-    nic,
+    aadhar,
     dob,
     gender,
     password,
@@ -117,7 +118,7 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
     lastname,
     email,
     phone,
-    nic,
+    aadhar,
     dob,
     gender,
     password,
@@ -128,7 +129,7 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
     !lastname ||
     !email ||
     !phone ||
-    !nic ||
+    !aadhar ||
     !dob ||
     !gender ||
     !password ||
@@ -160,7 +161,7 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
     lastname,
     email,
     phone,
-    nic,
+    aadhar,
     dob,
     gender,
     password,

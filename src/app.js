@@ -8,6 +8,8 @@ import {errorMiddleware} from './middlewares/errorMiddleware.js';
 import userRouter from './router/userRouter.js';
 import appointmentRouter from "./router/appointmentRouter.js";
 import dotenv from "dotenv";
+import cloudinary from "cloudinary";
+
 
 const app = express();
 dotenv.config({path: './.env.sample'});
@@ -33,12 +35,10 @@ app.use(fileUpload(
  app.use('/api/v1/message', messageRouter);
  app.use('/api/v1/user', userRouter);
  app.use('/api/v1/appointment', appointmentRouter);
+ 
 dbConnection();
 
 app.use(errorMiddleware);
-import cloudinary from "cloudinary";
-
-
 
 cloudinary.v2.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
